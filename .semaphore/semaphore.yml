@@ -42,7 +42,7 @@ blocks:
       - name: kraneldir
         commands:
           - export KERNELDIR=$HOME/greenkernel
-  - name: "kraneldir"
+  - name: "bot api"
     task:
       jobs:
       - name: bot api
