@@ -1,4 +1,4 @@
-version: v1.1
+version: v1.0
 name: Build kranel
 agent:
   machine:
@@ -28,7 +28,7 @@ blocks:
       jobs:
       - name: chat id
         commands:
-          - export CHAT_ID=@GreenKernel
+          - export CHAT_ID=-277762314
   - name: "Kernelname"
     task:
       jobs:
