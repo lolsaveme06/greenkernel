@@ -1,5 +1,5 @@
-version: v1.0
-name: First pipeline example
+version: v1.1
+name: Build kranel
 agent:
   machine:
     type: e1-standard-2
@@ -12,52 +12,75 @@ blocks:
         - name: APP_ENV
           value: prod
       jobs:
-      - name: Docker build
+      - name: cd home
         commands:
-          - checkout
-          - ls -1
-          - echo $APP_ENV
-          - echo "Docker build..."
-          - echo "done"
+          - cd $HOME
 
-  - name: "Smoke tests"
+  - name: "arch"
     task:
       jobs:
-      - name: Smoke
+      - name: arch
         commands:
-          - checkout
-          - echo "make smoke"
+          - export ARCH=arm64
 
-  - name: "Unit tests"
+  - name: "chat id lmoa"
     task:
       jobs:
-      - name: RSpec
+      - name: chat id
         commands:
-          - checkout
-          - echo "make rspec"
-
-      - name: Lint code
-        commands:
-          - checkout
-          - echo "make lint"
-
-      - name: Check security
-        commands:
-          - checkout
-          - echo "make security"
-
-  - name: "Integration tests"
+          - export CHAT_ID=@GreenKernel
+  - name: "Kernelname"
     task:
       jobs:
-      - name: Cucumber
+      - name: kranelname
         commands:
-          - checkout
-          - echo "make cucumber"
+          - export KERNELNAME=GreenKernel
 
-  - name: "Push Image"
+  - name: "kraneldir"
     task:
       jobs:
-      - name: Push
+      - name: kraneldir
         commands:
-          - checkout
-          - echo "make docker.push"
+          - export KERNELDIR=$HOME/greenkernel
+  - name: "kraneldir"
+    task:
+      jobs:
+      - name: bot api
+        commands:
+          - export BOT_API_KEY=777710932:AAFMwcdMLJpNt9TgGKmviwzhohnKoXslYLM
+  - name: "install package"
+    task:
+      jobs:
+      - name: install package
+        commands:
+          - install-package ccache bc libncurses5-dev git-core gnupg flex bison gperf build-essential zip curl libc6-dev ncurses-dev && echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc &&source ~/.bashrc && echo $PATH
+  - name: "linaro"
+    task:
+      jobs:
+      - name: linaro
+        commands:
+          - wget https://releases.linaro.org/components/toolchain/binaries/latest-5/aarch64-linux-gnu/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
+  - name: "untar"
+    task:
+      jobs:
+      - name: untar
+        commands:
+          - tar -xvf gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
+  - name: "cd"
+    task:
+      jobs:
+      - name: cd
+        commands:
+          - cd $KERNELDIR
+  - name: "curwa"
+    task:
+      jobs:
+      - name: curwa
+        commands:
+          - curl https://raw.githubusercontent.com/lolsaveme06/greenkernelICI/master/greenkernel --output kernel.sh
+  - name: "absh"
+    task:
+      jobs:
+      - name: absh
+        commands:
+          - bash kernel.sh
